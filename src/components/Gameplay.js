@@ -5,15 +5,15 @@ import "./gameplay.css";
 export default class Gameplay extends Component {
   constructor(props) {
     super(props);
-    this.gameDimensions = 20; // n x n matrix
+    this.gameDimensions = 20; // For n x n matrix
     this.state = {
-      activeBox: 280,
+      activeBox: 280, // Snake Head in the matrix
       isDirectionHorizontal: false, // true for Horizontal and false for Vertical
       isMovementPositive: false, // true for one side and vice versa
-      isMoving: true,
-      direction: `up`,
+      isMoving: true, // Game is over or not
+      direction: `up`,  // Current moving direction
       snakeLength: 3,
-      snakePositions: [],
+      snakePositions: [], // Snake Length positions
       gameDimensions: this.gameDimensions,
       score: 0,
       currentFoodPosition: parseInt(Math.random()*this.gameDimensions*this.gameDimensions)
@@ -25,10 +25,6 @@ export default class Gameplay extends Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
-  }
-
-  componentDidUpdate() {
-    //console.log(`updated`);
   }
 
   resetGame () {
@@ -223,7 +219,7 @@ export default class Gameplay extends Component {
         style={gridContainerStyle}
         onKeyPress={this.handleKeyPress}
       >
-        
+        {/** Make a Grid n x n with divs*/}
         {[...Array(this.state.gameDimensions * this.state.gameDimensions)].map((_, i) => {
           return (
             <div
@@ -237,7 +233,6 @@ export default class Gameplay extends Component {
               }
               key={i}
             >
-              {/*i % this.state.gameDimensions}, {parseInt(i / this.state.gameDimensions)*/}
             </div>
           );
         })}

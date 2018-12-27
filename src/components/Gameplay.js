@@ -95,6 +95,7 @@ export default class Gameplay extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    // Prevent update while changing directions
     if (
       this.state.isDirectionHorizontal !== nextState.isDirectionHorizontal ||
       this.state.isMovementPositive !== nextState.isMovementPositive
